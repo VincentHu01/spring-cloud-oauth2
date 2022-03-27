@@ -1,0 +1,33 @@
+server:
+  port: 2003
+  servlet:
+    context-path: /account
+spring:
+  profiles:
+    active: dev
+  application:
+    name: account-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        group: SPRING_CLOUD
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+
+feign:
+  sentinel:
+    enabled: true
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic

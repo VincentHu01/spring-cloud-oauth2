@@ -1,0 +1,52 @@
+server:
+  port: 2000
+spring:
+  main:
+    web-application-type: reactive
+  application:
+    name: gateway-service
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        group: SPRING_CLOUD
+      config:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        file-extension: yaml
+    gateway:
+      httpclient:
+        max-header-size: 65565
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: account-service
+          uri: lb://account-service
+          predicates:
+            - Path=/account/**
+          filters: StripPrefix=0
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+          filters: StripPrefix=0
+        - id: storage-service
+          uri: lb://storage-service
+          predicates:
+            - Path=/storage/**
+          filters: StripPrefix=0
+        - id: uaa-service
+          uri: lb://uaa-service
+          predicates:
+            - Path=/uaa/**
+          filters: StripPrefix=0

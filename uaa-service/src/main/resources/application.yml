@@ -1,0 +1,24 @@
+server:
+  port: 2001
+  servlet:
+    context-path: /uaa
+spring:
+  application:
+    name: uaa-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        group: SPRING_CLOUD
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
+    username: root
+    password: 1234
+
+mybatis:
+  mapperLocations: classpath*:mapper/*.xml
+  type-aliases-package: org.springboot.sample.entity
+  config-location: classpath:config/mybatis-config.xml

@@ -1,0 +1,12 @@
+server:
+  port: 2002
+spring:
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        group: SPRING_CLOUD

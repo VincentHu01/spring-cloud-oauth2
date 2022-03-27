@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ai.uaa.dao.UserDao">
+
+    <select id="selectUser" resultType="com.ai.uaa.pojo.UaaUser" parameterType="java.lang.String">
+        select
+        name username,
+        password password
+        from user
+        where name = #{name}
+    </select>
+
+</mapper>

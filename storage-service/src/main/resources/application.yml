@@ -1,0 +1,14 @@
+server:
+  port: 2004
+  servlet:
+    context-path: /storage
+spring:
+  application:
+    name: storage-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        group: SPRING_CLOUD

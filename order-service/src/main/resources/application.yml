@@ -1,0 +1,29 @@
+server:
+  port: 2002
+  servlet:
+    context-path: /order
+spring:
+#  main:
+#    web-application-type: reactive
+  profiles:
+    active: dev
+  application:
+    name: order-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+        username: nacos
+        password: nacos
+        group: SPRING_CLOUD
+feign:
+  sentinel:
+    enabled: true
+  okhttp:
+    enabled: true
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 5000
+#        readTimeout: 5000
+#        loggerLevel: basic
